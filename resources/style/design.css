@@ -1,0 +1,18 @@
+/* ------------------------------------------------------------------------------------------------------------------ */
+/* Background color and font */
+body {
+    background: #EEE;
+    color: #555;
+    font-family: 'RobotoDraft', sans-serif;
+}
+
+/* Toolbar */
+core-toolbar {
+    background: #607D8B;
+    color: white;
+}
+
+/* Application title in toolbar */
+core-toolbar #appTitle {
+    display: none;
+}
