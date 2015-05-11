@@ -23,7 +23,7 @@
 
             /* Header */
             .x-content header {
-                background: #607D8B;
+                background: #455A64;
                 color: white;
                 height: 300px;
                 width: 100%;
@@ -44,7 +44,7 @@
             }
             .x-content .title img {
                 display: inline-block;
-                margin: 0 20px 0 0;
+                margin: 0 20px 10px 0;
                 width: 110px;
             }
             .x-content .title h1 {
@@ -54,7 +54,6 @@
                 font-weight: normal;
                 margin: 5px 0 30px 0;
             }
-
             /* Description */
             .x-content .description {
                 background: white;
@@ -124,7 +123,7 @@
                 text-decoration: none;
             }
             .x-content .app paper-button.primary {
-                background: #607D8B;
+                background: #455A64;
                 color: white;
             }
             .x-content .app paper-button.primary a {
@@ -210,6 +209,7 @@
                     </paper-item>
 
                 </template>
+
             </paper-shadow>
 
             <!-- App list -->
@@ -225,6 +225,9 @@
                     <h2>{{app.name}}</h2>
 
                     <!-- Polymer version -->
+                    <h4><strong>Version:</strong> {{app.version}}</h4>
+
+                    <!-- Polymer -->
                     <h4><strong>Polymer:</strong> {{app.polymer}}</h4>
 
                     <!-- Other technologies used -->
@@ -247,7 +250,7 @@
                         </paper-button>
 
                         <!-- Github repository -->
-                        <paper-button>
+                        <paper-button raised>
                             <a href="{{app.github}}" target="_blank">Github repository</a>
                         </paper-button>
 
@@ -285,6 +288,7 @@
                     {
                         id: "password-generator",
                         name: "Password Generator",
+                        version: "2.0",
                         polymer: "0.5",
                         technologies: "None",
                         description: "Small application used to generate unique and strong passwords for different websites and services based on combination of an alias for a service and one strong secret phrase.",
