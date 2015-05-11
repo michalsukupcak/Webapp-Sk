@@ -48,7 +48,7 @@
 
         <!-- Toolbar -->
         <core-toolbar>
-            <div id="appTitle"><strong>Webapp.sk</strong> - Polymer Web Applications</div>
+            <div id="appTitle"><strong>Webapp.sk</strong></div>
             <div flex></div>
             <div><core-icon icon="info"></core-icon></div>
         </core-toolbar>
@@ -60,23 +60,23 @@
 
     <script type="text/javascript">
 
-        /* core-header-panel reference */
+        // core-header-panel reference
         var coreHeaderPanel = document.querySelector("core-header-panel");
 
-        /* "scroll" event listener for core-header-panel */
+        // "scroll" event listener for core-header-panel
         coreHeaderPanel.addEventListener("scroll", function (event) {
 
-            /* #appTitle reference */
+            // #appTitle reference
             var appTitle = document.querySelector("#appTitle");
 
-            /* If scrollTop on core-header-panel event is more than 177px, show #appTitle */
+            // If scrollTop on core-header-panel event is more than 177px, show #appTitle
             if (event.detail.target.scrollTop > 177) {
                 appTitle.style.display = "block";
             } else {
                 appTitle.style.display = "none";
             }
 
-            /* If scrollTop on core-header-panel event is more than 202px, set shadow on panel */
+            // If scrollTop on core-header-panel event is more than 202px, set shadow on panel
             if (event.detail.target.scrollTop > 202) {
                 coreHeaderPanel.shadow = true;
             } else {

@@ -2,9 +2,11 @@
   "name": "Polymer core-ajax demo",
   "version": "1.0",
   "dependencies": {
+
     "polymer": "Polymer/polymer#^0.5",
     "font-roboto": "Polymer/font-roboto",
 
+    "core-animated-pages": "Polymer/core-animated-pages",
     "core-header-panel": "Polymer/core-header-panel",
     "core-icon": "Polymer/core-icon",
     "core-image": "Polymer/core-image",
@@ -12,7 +14,10 @@
     "core-toolbar": "Polymer/core-toolbar",
 
     "paper-button": "Polymer/paper-button",
+    "paper-fab": "Polymer/paper-fab",
     "paper-item": "Polymer/paper-item",
-    "paper-shadow": "Polymer/paper-shadow"
+    "paper-shadow": "Polymer/paper-shadow",
+    "paper-tabs": "Polymer/paper-tabs"
+
   }
 }

@@ -1,11 +1,20 @@
 <!-- Core elements -->
+<link rel="import" href="./../vendor/core-animated-pages/core-animated-pages.html">
+<link rel="import" href="./../vendor/core-animated-pages/transitions/slide-from-right.html">
+<link rel="import" href="./../vendor/core-icons/communication-icons.html">
 <link rel="import" href="./../vendor/core-image/core-image.html">
 <link rel="import" href="./../vendor/core-media-query/core-media-query.html">
 
 <!-- Paper elements -->
 <link rel="import" href="./../vendor/paper-button/paper-button.html">
+<link rel="import" href="./../vendor/paper-fab/paper-fab.html">
 <link rel="import" href="./../vendor/paper-item/paper-item.html">
 <link rel="import" href="./../vendor/paper-shadow/paper-shadow.html">
+<link rel="import" href="./../vendor/paper-tabs/paper-tab.html">
+<link rel="import" href="./../vendor/paper-tabs/paper-tabs.html">
+
+<!-- Custom elements -->
+<link rel="import" href="./Application.html">
 
 <!-- Content element -->
 <polymer-element name="x-content">
@@ -15,140 +24,46 @@
     <template>
 
         <!-- ----------------------------------------------------- -->
-        <!-- Design -->
+        <!-- Style -->
         <style>
 
             /* Content */
             .x-content {}
 
             /* Header */
-            .x-content header {
-                background: #455A64;
-                color: white;
-                height: 300px;
-                width: 100%;
-            }
+            .x-content header { background: #455A64; color: white; height: 300px; width: 100%; }
 
             /* Title */
-            .x-content .title {
-                color: white;
-                margin: -200px auto auto auto;
-                padding: 10px 0 0 0;
-                text-shadow: 0px 1px 0px #333;
-                width: 60%;
-            }
-            .x-content .title.fill {
-                box-sizing: border-box;
-                padding: 0 3%;
-                width: 100%;
-            }
-            .x-content .title img {
-                display: inline-block;
-                margin: 0 20px 10px 0;
-                width: 110px;
-            }
-            .x-content .title h1 {
-                margin: 0;
-            }
-            .x-content .title h2 {
-                font-weight: normal;
-                margin: 5px 0 30px 0;
-            }
+            .x-content .title { color: white; margin: -200px auto auto auto; padding: 10px 0 0 0; text-shadow: 0px 1px 0px #333; width: 60%; }
+            .x-content .title.fill { box-sizing: border-box; padding: 0 3%; width: 100%; }
+            .x-content .title img { display: inline-block; margin: 0 20px 10px 0; width: 110px;  }
+            .x-content .title h1 { margin: 0; }
+            .x-content .title h2 { font-weight: normal; margin: 5px 0 30px 0; }
+
             /* Description */
-            .x-content .description {
-                background: white;
-                box-sizing: border-box;
-                line-height: 1.4em;
-                margin: auto;
-                padding: 3%;
-                text-align: justify;
-                width: 60%;
-            }
-            .x-content .description.fill {
-                width: 100%;
-            }
-            .x-content .description a {
-                color: #607D8B
-            }
-            .x-content .description a:hover {
-                text-decoration: none;
-            }
-            .x-content .description blockquote {
-                border-left: 5px solid #CCC;
-                color: #999;
-                font-style: italic;
-                padding: 5px 10px;
-            }
-            .x-content .description .signature {
-                margin: 10px 0 0 0;
-                font-style: italic;
-                text-align: right;
-            }
-            .x-content .description hr {
-                border: none;
-                border-top: 1px solid #CCC;
-                margin: 50px auto;
-            }
-            .x-content .description h3 {
-                margin: 10px auto auto auto;
-            }
-            .x-content .description paper-item a {
-                text-decoration: none;
-            }
+            .x-content .description { background: white; box-sizing: border-box; line-height: 1.4em; margin: auto; padding: 3%; text-align: justify; width: 60%; }
+            .x-content .description.fill { width: 100%; }
+            .x-content .description paper-fab { background: #FF4081; position: absolute; right: 5%; top: -30px; }
+            .x-content .description a { color: #607D8B }
+            .x-content .description a:hover { text-decoration: none; }
+            .x-content .description blockquote { border-left: 5px solid #CCC; color: #999; font-style: italic; padding: 5px 10px; }
+            .x-content .description .signature { margin: 10px 0 0 0; font-style: italic; text-align: right; }
+            .x-content .description hr { border: none; border-top: 1px solid #CCC; margin: 50px auto; }
+            .x-content .description h3 { margin: 10px auto auto auto; }
+            .x-content .description paper-item a { text-decoration: none; }
 
             /* App */
-            .x-content .app {
-                margin-top: 20px;
-            }
-            .x-content .app h3 {
-                margin: 0;
-                padding: 0;
-            }
-            .x-content .app h4 {
-                font-weight: normal;
-                margin: 5px 0 0 0;
-                padding: 0;
-            }
-            .x-content .app .desc {
-                margin: 20px 0 0 0;
-            }
-            .x-content .app img {
-                border: 1px solid #999;
-                display: block;
-                margin: 20px 0;
-                max-width: 100%;
-            }
-            .x-content .app paper-button a {
-                color: #555;
-                text-decoration: none;
-            }
-            .x-content .app paper-button.primary {
-                background: #455A64;
-                color: white;
-            }
-            .x-content .app paper-button.primary a {
-                color: white;
-            }
+            .x-content .apps { margin-top: 20px; }
+            .x-content .apps paper-tabs { border-bottom: 1px solid #CCC;}
+            .x-content .apps paper-tabs::shadow #selectionBar { background-color: #FF4081; }
+            .x-content .apps paper-tabs paper-tab { cursor: pointer; }
+            .x-content .apps paper-tabs paper-tab::shadow #ink { color: #FF4081; }
+            .x-content .apps core-animated-pages { background: white; min-height: 930px; overflow: auto; }
 
             /* Footer */
-            .x-content footer {
-                border-top: 1px solid #CCC;
-                color: #999;
-                font-size: .8em;
-                font-style: italic;
-                margin: 40px auto auto auto;
-                padding: 20px 0;
-                text-align: center;
-                width: 60%;
-            }
-            .x-content footer a {
-                color: #999;
-                font-weight: bold;
-                text-decoration: none;
-            }
-            .x-content footer a:hover {
-                text-decoration: underline;
-            }
+            .x-content footer { border-top: 1px solid #CCC; color: #999; font-size: .8em; font-style: italic; margin: 40px auto auto auto; padding: 20px 0; text-align: center; width: 60%;  }
+            .x-content footer a { color: #999; font-weight: bold; text-decoration: none; }
+            .x-content footer a:hover { text-decoration: underline;  }
 
         </style>
 
@@ -161,12 +76,16 @@
                     query="max-width: 1024px"
                     queryMatches="{{fullscreen}}"></core-media-query>
 
+            <core-media-query
+                    query="max-width: 420px"
+                    queryMatches="{{mobileView}}"></core-media-query>
+
             <!-- Header background -->
             <header></header>
 
             <!-- Title -->
             <div class="title {{ {fill: fullscreen} | tokenList }}" horizontal layout>
-                <div>
+                <div hidden?="{{mobileView}}">
                     <img src="./../resources/images/polymer.svg">
                 </div>
                 <div>
@@ -178,6 +97,12 @@
             <!-- Description -->
             <paper-shadow class="description {{ {fill: fullscreen} | tokenList }}">
 
+                <!-- Email FAB -->
+                <a href="https://github.com/michalsukupcak?tab=repositories" target="_blankgit">
+                    <paper-fab icon="apps" hidden?="{{mobileView}}"></paper-fab>
+                </a>
+
+                <!-- Text -->
                 Hi! This is the Webapp.sk project. Home to several small web applications written in
                 <a href="https://www.polymer-project.org/">Polymer</a>. That's a Google backed framework
                 <blockquote>
@@ -194,77 +119,38 @@
                 To get started, follow tutorials on Polymer Project's website or check out my apps and my
                 <a href="github.com/michalsukupcak">Github</a> repository.
                 <div class="signature">
-                    Cheers, Michal
+                    Good luck, Michal
                 </div>
-
-                <hr>
-
-                <!-- App list -->
-                <h3>List of published apps:</h3>
-                <template repeat="{{ app in apps }}">
-
-                    <!-- App list item -->
-                    <paper-item>
-                        <a href="#app-{{app.id}}">{{app.name}}</a>
-                    </paper-item>
-
-                </template>
 
             </paper-shadow>
 
             <!-- App list -->
-            <template repeat="{{ app in apps }}">
+            <paper-shadow class="description apps {{ {fill: fullscreen} | tokenList }}">
 
-                <!-- App -->
-                <paper-shadow class="description app {{ {fill: fullscreen} | tokenList }}">
+                <h2>Published applications:</h2>
 
-                    <!-- Anchor -->
-                    <a name="app-{{app.id}}"></a>
+                <!-- Tabs -->
+                <paper-tabs selected="{{selectedApp}}">
+                    <template repeat="{{ app in apps }}">
+                        <paper-tab>{{app.name}}</paper-tab>
+                    </template>
+                </paper-tabs>
 
-                    <!-- Name -->
-                    <h2>{{app.name}}</h2>
+                <!-- App pages -->
+                <core-animated-pages selected="{{selectedApp}}" transitions="hero-transition slide-from-right">
+                    <template repeat="{{ app in apps }}">
+                        <x-application app="{{app}}"></x-application>
+                    </template>
+                </core-animated-pages>
 
-                    <!-- Polymer version -->
-                    <h4><strong>Version:</strong> {{app.version}}</h4>
+            </paper-shadow>
 
-                    <!-- Polymer -->
-                    <h4><strong>Polymer:</strong> {{app.polymer}}</h4>
-
-                    <!-- Other technologies used -->
-                    <h4><strong>Other technologies:</strong> {{app.technologies}}</h4>
-
-                    <!-- Description -->
-                    <div class="desc">
-                        {{app.description}}
-                    </div>
-
-                    <!-- Screenshot -->
-                    <img src="./resources/images/apps/{{app.screenshot}}">
-
-                    <!-- Links -->
-                    <div horizontal layout center>
-
-                        <!-- Application -->
-                        <paper-button class="primary" raised>
-                            <a href="{{app.link}}" target="_blank">Open app</a>
-                        </paper-button>
-
-                        <!-- Github repository -->
-                        <paper-button raised>
-                            <a href="{{app.github}}" target="_blank">Github repository</a>
-                        </paper-button>
-
-                    </div>
-
-                </paper-shadow>
-
-                <footer>
-                    <a href="http://creativecommons.org/licenses/by/4.0/legalcode">CC Attribution 4.0 International</a>
-                    |
-                    Created by <a href="https://github.com/michalsukupcak">Michal Sukupčák</a> in 2015
-                </footer>
-
-            </template>
+            <!-- Footer -->
+            <footer>
+                <a href="http://creativecommons.org/licenses/by/4.0/legalcode">CC Attribution 4.0 International</a>
+                |
+                Created by <a href="https://github.com/michalsukupcak">Michal Sukupčák</a> in 2015
+            </footer>
 
         </div>
 
@@ -280,13 +166,15 @@
 
             ready: function () {
 
+                // Selected tab and core-page
+                this.selectedApp = 0;
+
                 // Set fullscreen to false bu default
                 this.fullscreen = false;
 
                 // List of apps to show
                 this.apps = [
                     {
-                        id: "password-generator",
                         name: "Password Generator",
                         version: "2.0",
                         polymer: "0.5",
@@ -295,6 +183,15 @@
                         screenshot: "password-generator.png",
                         link: "http://password-generator.webapp.sk",
                         github: "https://github.com/michalsukupcak/Password-Generator"
+                    },{
+                        name: "Polymer Start",
+                        version: "1.0",
+                        polymer: "0.5",
+                        technologies: "None",
+                        description: "Skeleton application for fast startup of Polymer projects.",
+                        screenshot: "polymer-start.png",
+                        link: "",
+                        github: "https://github.com/michalsukupcak/Polymer-Start"
                     }
                 ];
 
@@ -302,6 +199,8 @@
 
             /* ------------------------------------------------------------------- */
             /* Custom functions */
+
+            /* None */
 
         })
     </script>

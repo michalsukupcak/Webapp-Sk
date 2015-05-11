@@ -1,0 +1,97 @@
+<!-- Core elements -->
+<!-- None -->
+
+<!-- Paper elements -->
+<link rel="import" href="./../vendor/paper-button/paper-button.html">
+<link rel="import" href="./../vendor/paper-shadow/paper-shadow.html">
+
+<!-- Content element -->
+<polymer-element name="x-application" attributes="app">
+
+    <!-- ----------------------------------------------------------------------------------------------------------- -->
+    <!-- Template -->
+    <template>
+
+        <!-- ----------------------------------------------------- -->
+        <!-- Style -->
+        <style>
+
+            /* Application */
+            .x-application { margin: 40px 5px 20px 5px; }
+            .x-application h3 { margin: 0; padding: 0; }
+            .x-application h4 { font-weight: normal; margin: 5px 0 0 0; padding: 0; }
+            .x-application .desc { margin: 20px 0 0 0; }
+            .x-application img { border: 1px solid #999; display: block; margin: 20px auto; max-width: 100%; }
+            .x-application paper-button a { color: #555; text-decoration: none; }
+            .x-application paper-button.primary { background: #FF4081; color: white; }
+            .x-application paper-button.primary a { color: white; }
+
+        </style>
+
+        <!-- ----------------------------------------------------- -->
+        <!-- HTML -->
+        <div class="x-application">
+
+           <!-- Anchor -->
+           <a name="app-{{app.id}}"></a>
+
+                <!-- Name -->
+                <h2>{{app.name}}</h2>
+
+                <!-- Polymer version -->
+                <h4><strong>Version:</strong> {{app.version}}</h4>
+
+                <!-- Polymer -->
+                <h4><strong>Polymer:</strong> {{app.polymer}}</h4>
+
+                <!-- Other technologies used -->
+                <h4><strong>Other technologies:</strong> {{app.technologies}}</h4>
+
+                <!-- Description -->
+                <div class="desc">
+                    {{app.description}}
+                </div>
+
+                <!-- Screenshot -->
+                <img src="./resources/images/apps/{{app.screenshot}}">
+
+                <!-- Links -->
+                <div horizontal layout center center-justified>
+
+                    <!-- Application -->
+                    <paper-button class="primary" raised hidden?="{{app.link == ''}}">
+                        <a href="{{app.link}}" target="_blank">Open app</a>
+                    </paper-button>
+
+                    <!-- Github repository -->
+                    <paper-button raised>
+                        <a href="{{app.github}}" target="_blank">Github repository</a>
+                    </paper-button>
+
+                </div>
+
+        </div>
+
+    </template>
+
+    <!-- ----------------------------------------------------------------------------------------------------------- -->
+    <!-- Scripts -->
+    <script>
+        Polymer('x-application', {
+
+            /* ------------------------------------------------------------------- */
+            /* Built-in functions */
+
+            ready: function () {
+
+            }
+
+            /* ------------------------------------------------------------------- */
+            /* Custom functions */
+
+            /* None */
+
+        });
+    </script>
+
+</polymer-element>
