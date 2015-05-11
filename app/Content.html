@@ -35,7 +35,7 @@
 
             /* Title */
             .x-content .title { color: white; margin: -200px auto auto auto; padding: 10px 0 0 0; text-shadow: 0px 1px 0px #333; width: 60%; }
-            .x-content .title.fill { box-sizing: border-box; padding: 0 30px; width: 100%; }
+            .x-content .title.fill { box-sizing: border-box; padding: 0 30px 10px 30px; width: 100%; }
             .x-content .title img { display: inline-block; margin: 0 20px 10px 0; width: 110px;  }
             .x-content .title h1 { margin: 0; }
             .x-content .title h2 { font-weight: normal; margin: 5px 0 30px 0; }
@@ -71,11 +71,12 @@
         <!-- HTML -->
         <div class="x-content">
 
-            <!-- Media query -->
+            <!-- Media query - Set fullscreen to true until 1024px -->
             <core-media-query
                     query="max-width: 1024px"
                     queryMatches="{{fullscreen}}"></core-media-query>
 
+            <!-- Media query - Set mobileView to true until 420px -->
             <core-media-query
                     query="max-width: 420px"
                     queryMatches="{{mobileView}}"></core-media-query>
@@ -99,7 +100,7 @@
 
                 <!-- Email FAB -->
                 <a href="https://github.com/michalsukupcak?tab=repositories" target="_blankgit">
-                    <paper-fab icon="apps" hidden?="{{mobileView}}"></paper-fab>
+                    <paper-fab icon="apps"></paper-fab>
                 </a>
 
                 <!-- Text -->
